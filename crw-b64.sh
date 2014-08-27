@@ -9,8 +9,6 @@ crw-b64(){
   [[ "$f" -lt "0" ]] && f=$(($f + 4096))
   f_low=$(( $f & 63 ))
   f_high=$(( ($f & 0xFC0) >> 6 ))
-  echo $f_low
-  echo $f_high
   # Time to encode, TODO
   printf $(_crw-intchar $f_low | base64) 
   printf $(_crw-intchar $f_high | base64)
