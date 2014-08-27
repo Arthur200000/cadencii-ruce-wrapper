@@ -1,5 +1,4 @@
-﻿.PHONY: default help test \
-install install-lib
+﻿.PHONY: install help default uninstall crw-base64
 
 CMD := ruce-wrapper
 
@@ -22,7 +21,6 @@ help:
 	@echo ''
 	@echo 'This script supports DESTDIR for installation.'
 	
-# test: NO TEST PROVIDED
 
 install: crw-base64
 	install -m755 ruce-wrapper $(INSTALL_BIN)
