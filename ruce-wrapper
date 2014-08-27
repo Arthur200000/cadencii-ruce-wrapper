@@ -1,26 +1,24 @@
 #! /bin/bash
 RUCE=RUCE_CLI
-echo $* >> /tmp/ruce.log
+echo -e "COMMAND: $0 $(for i in "$@"; do printf "'$i'"; done)\n" >> /tmp/ruce.log
 pitchconverter(){
-TEMPO=`echo $1 | cut -d Q -f 2`
-echo -n '!'$TEMPO' '
-for i
-do
-PITCH=`echo $1 | cut -d Q -f 1`
-echo $PITCH | crw-base64
-shift 1
-done
+  TEMPO=`echo $1 | cut -d Q -f 2`
+  echo -n '!'$TEMPO' '
+  for i; do
+    PITCH=`echo $1 | cut -d Q -f 1`
+    echo $PITCH | crw-base64 # convert.c
+    shift
+  done
 }
+
 P1="$1 $2 $3 $4"
 shift 4
-if echo $1 | cut -c 1 | grep [0-9] >/dev/null 2>&1
-then
-P1="$P1 0 $1 $2 $3 $4"
-shift 4
-else
-P1="$P1 $1 $2 $3 $4 $5" 
-shift 5
+
+if (echo $1 | cut -c 1 | grep [0-9] &>/dev/null)
+then P1+=" 0 $1 $2 $3 $4"; shift 4
+else P1+=" $1 $2 $3 $4 $5"; shift 5
 fi
+
 P1="$P1 $1 $2"
 echo $P1
 shift 2
