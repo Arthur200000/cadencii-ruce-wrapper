@@ -1,6 +1,8 @@
 /*
 convert.c: A small program that converts the PITCH data for Utau-compatible engines.
 Assumed valid input.
+
+Write one in Bash if you'd like to :)
 */
 #include <stdio.h>
 // Encodes the int i<=63 in base64.
