@@ -1,4 +1,4 @@
-﻿.PHONY: install help default uninstall crw-base64
+﻿.PHONY: install help default uninstall crw-base64 crw-bash
 
 CMD := ruce-wrapper
 
@@ -28,6 +28,10 @@ install: crw-base64
 
 crw-base64:
 	$(CC) $(CFLAGS) convert.c -o crw-base64
+
+# Uses crw-base64() in bash
+crw-bash:
+	install -m755 ruce-wrapper $(INSTALL_BIN)
 
 uninstall:
 	rm -rf $(INSTALL_BIN)/ruce-wrapper
