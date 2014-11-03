@@ -1,6 +1,6 @@
 #! /bin/bash
 RUCE=RUCE_CLI
-echo -e "COMMAND: $0 $(for i in "$@"; do printf "'$i'"; done)\n" >> /tmp/ruce.log
+echo -e "COMMAND: '$0' $(for i in "$@"; do echo -n "'$i'"; done)\n" >> /tmp/ruce.log
 pitchconverter(){
   TEMPO=`echo $1 | cut -d Q -f 2`
   echo -n '!'$TEMPO' '
